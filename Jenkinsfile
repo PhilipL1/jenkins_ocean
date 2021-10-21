@@ -8,9 +8,20 @@ pipeline {
     }
 
     stage('Test') {
-      steps {
-        sh '''echo "test running"
+      parallel {
+        stage('Test') {
+          steps {
+            sh '''echo "test running"
 '''
+          }
+        }
+
+        stage('test1') {
+          steps {
+            echo 'anything '
+          }
+        }
+
       }
     }
 
